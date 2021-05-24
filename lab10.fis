@@ -1,0 +1,48 @@
+[System]
+Name='lab10'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='рівень_рідини'
+Range=[0 10]
+NumMFs=3
+MF1='низький':'gaussmf',[1.5 0]
+MF2='середній':'gaussmf',[1.5 5]
+MF3='високий':'gaussmf',[1.5 10]
+
+[Input2]
+Name='витрата_рідини'
+Range=[0 0.5]
+NumMFs=3
+MF1='низька':'trapmf',[0 0 0.05 0.15]
+MF2='середня':'trapmf',[0.15 0.2 0.3 0.35]
+MF3='висока':'trapmf',[0.35 0.45 0.5 0.5]
+
+[Output1]
+Name='функції'
+Range=[0 0.5]
+NumMFs=4
+MF1='0,1':'linear',[0.1 1 0]
+MF2='0,2':'linear',[0.2 1 0]
+MF3='0,3':'linear',[0.3 1 0]
+MF4='0,4':'linear',[0.4 1 0]
+
+[Rules]
+1 3, 3 (1) : 1
+1 2, 2 (1) : 1
+1 1, 1 (1) : 1
+2 3, 3 (1) : 1
+2 2, 2 (1) : 1
+2 1, 1 (1) : 1
+3 3, 4 (1) : 1
+3 2, 2 (1) : 1
+3 1, 1 (1) : 1

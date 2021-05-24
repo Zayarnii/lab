@@ -1,0 +1,48 @@
+[System]
+Name='Lab9'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=8
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='обслуговування'
+Range=[0 10]
+NumMFs=4
+MF1='погане':'gaussmf',[0.9 0]
+MF2='задовільне':'gaussmf',[0.9 3.36]
+MF3='добре':'gaussmf',[0.9 6.67]
+MF4='відмінне':'gaussmf',[0.9 10]
+
+[Input2]
+Name='якість_страв'
+Range=[0 10]
+NumMFs=2
+MF1='погана':'trapmf',[0 0 1 3]
+MF2='чудова':'trapmf',[7 8 10 10]
+
+[Output1]
+Name='чайові'
+Range=[0 20]
+NumMFs=5
+MF1='дуже_малі':'trimf',[0 2 4]
+MF2='малі':'trimf',[4 6 8]
+MF3='середні':'trimf',[8 10 12]
+MF4='великі':'trimf',[12 14 16]
+MF5='щедрі':'trimf',[16 18 20]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 2 (1) : 1
+2 1, 2 (1) : 1
+2 2, 3 (1) : 1
+3 1, 3 (1) : 1
+3 2, 4 (1) : 1
+4 1, 4 (1) : 1
+4 2, 5 (1) : 1
